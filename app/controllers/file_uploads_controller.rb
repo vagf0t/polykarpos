@@ -10,7 +10,7 @@ class FileUploadsController < ApplicationController
 
   def create
     @file_upload = FileUpload.new(file_upload_params)
-
+    @file_upload.name = file_upload_params["attachment"].original_filename
     if @file_upload.save   
        redirect_to file_uploads_path, notice: "Successfully uploaded."   
     else   

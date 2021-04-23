@@ -17,8 +17,12 @@ class FileUpload < ApplicationRecord
   end
 
   def traverse(level, depth, width, flat_tree) 
-    if (depth==1)
+    if depth==1
       self.genders = 'M' 
+    elsif width==2
+      self.genders = (genders || "").to_s + 'F' 
+    elsif width==1
+      self.genders = (genders || "").to_s + 'M'   
     else
       if level == 1
         flat_tree = 'M'
@@ -26,8 +30,11 @@ class FileUpload < ApplicationRecord
       while (level <= depth)     
         flat_tree += reverted(flat_tree)
         level+=1
-      end
-      self.genders = (genders || "").to_s + flat_tree[width - 1].to_s 
+        if flat_tree.length >= width%32
+          self.genders = (genders || "").to_s + flat_tree[width%32 - 1].to_s
+          break;
+        end
+      end 
     end
   end
 
