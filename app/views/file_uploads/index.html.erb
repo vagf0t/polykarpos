@@ -1,0 +1,40 @@
+<div class="container">
+<% if !flash[:notice].blank? %>
+   <div>
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br>
+
+<%= link_to "Upload file", new_file_upload_path %>
+<br>
+<br>
+
+<table>
+   <thead>
+      <tr>
+         <th>File Name</th>
+         <th>Download Link</th>
+         <th></th>
+         <th></th>
+         <th>Result</th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @file_uploads.each do |file| %>
+         
+         <tr>
+            <td><%= file.name %></td>
+            <td><%= link_to "Download", file.attachment_url %></td>
+            <td><%= link_to "Delete",  file, method: :delete, confirm: "Are you sure you want to delete #{file.name}?" %></td>
+            <td><%= link_to "Traverse", file_uploads_update_path(id: file) %></td>
+            <td><%= file.genders %></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
+</div>
