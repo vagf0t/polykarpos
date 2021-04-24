@@ -9,7 +9,7 @@ Traversing a binary tree of two-colored nodes. The root node is black and it has
 
 * Database creation: Start a terminal in the root folder of the app and run: rake db:migrate
 
-* How to run the test suite: WIP
+* How to run the test suite: Start a terminal in the root folder of the app and run: rspec spec
 
 * How to run locally: Start a terminal in the root folder of the app and run: rails s   . Then start a web browser and navigate at http://localhost:3000/
 

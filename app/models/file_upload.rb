@@ -23,6 +23,10 @@ class FileUpload < ApplicationRecord
       self.genders = (genders || "").to_s + 'F' 
     elsif width==1
       self.genders = (genders || "").to_s + 'M'   
+    elsif depth%2==1 && width==2**(depth-1)
+      self.genders = (genders || "").to_s + 'M'  
+    elsif depth%2==0 && width==2**(depth-1)
+      self.genders = (genders || "").to_s + 'F'   
     else
       if level == 1
         flat_tree = 'M'
