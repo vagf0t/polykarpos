@@ -55,6 +55,24 @@ RSpec.describe FileUpload, type: :model do
             file_upload.traverse(1, 8, 131, '')
             file_upload.traverse(1, 8, 163, '')
             expect(file_upload.genders).to eq 'FFFFFF'
+
+            file_upload.genders = ''
+            file_upload.traverse(1, 8 + rand(100), 3, '')
+            file_upload.traverse(1, 8 + rand(100), 35, '')
+            file_upload.traverse(1, 8 + rand(100), 67, '')
+            file_upload.traverse(1, 8 + rand(100), 99, '')
+            file_upload.traverse(1, 8 + rand(100), 131, '')
+            file_upload.traverse(1, 8 + rand(100), 163, '')
+            expect(file_upload.genders).to eq 'FFFFFF'
+
+            file_upload.genders = ''
+            file_upload.traverse(1, 9 + rand(100), 3, '')
+            file_upload.traverse(1, 9 + rand(100), 35, '')
+            file_upload.traverse(1, 9 + rand(100), 67, '')
+            file_upload.traverse(1, 9 + rand(100), 99, '')
+            file_upload.traverse(1, 9 + rand(100), 131, '')
+            file_upload.traverse(1, 9 + rand(100), 163, '')
+            expect(file_upload.genders).to eq 'FFFFFF'
         end
         
     end    
